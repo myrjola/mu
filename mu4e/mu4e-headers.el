@@ -609,6 +609,7 @@ after the end of the search results."
       (define-key map "%" 'mu4e-headers-mark-pattern)
       (define-key map "t" 'mu4e-headers-mark-subthread)
       (define-key map "T" 'mu4e-headers-mark-thread)
+      (define-key map "N" 'mu4e-headers-mark-thread-read)
 
       ;; navigation between messages
       (define-key map "p" 'mu4e-headers-prev)
@@ -1551,6 +1552,12 @@ region if there is a region, then move to the next message."
   (interactive)
   (mu4e-mark-set mark)
   (mu4e-headers-next))
+
+(defun mu4e-headers-mark-thread-read ()
+  "Marks the whole thread read and focuses the next message after
+the thread"
+  (interactive)
+  (mu4e-headers-mark-thread-using-markpair '(read)))
 
 (defun mu4e~headers-quit-buffer ()
   "Quit the mu4e-headers buffer.

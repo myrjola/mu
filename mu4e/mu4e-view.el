@@ -558,6 +558,7 @@ FUNC should be a function taking two arguments:
       (define-key map "%" 'mu4e-view-mark-pattern)
       (define-key map "t" 'mu4e-view-mark-subthread)
       (define-key map "T" 'mu4e-view-mark-thread)
+      (define-key map "N" 'mu4e-view-mark-thread-read)
 
       (define-key map "v" 'mu4e-view-verify-msg-popup)
 
@@ -940,6 +941,12 @@ matching messages with that mark."
 all messages in the thread at point in the headers view."
   (interactive)
   (mu4e~view-in-headers-context (mu4e-headers-mark-thread)))
+
+(defun mu4e-view-mark-thread-read ()
+  "Marks the whole thread read and focuses the next message after
+the thread."
+  (interactive)
+  (mu4e~view-in-headers-context (mu4e-headers-mark-thread-read)))
 
 (defun mu4e-view-mark-subthread ()
   "Ask user for a kind of mark (move, delete etc.), and apply it to
